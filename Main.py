@@ -12,6 +12,7 @@
 # COMMAND ----------
 
 import dds
+dds.set_store("dbfs", data_dir="/data_managed", internal_dir="/data_cache")
 
 # COMMAND ----------
 
@@ -84,9 +85,16 @@ def pipeline():
 
 # Evaluate the full pipeline
 # Note that it does not recompute the data, the data is already in cache.
-# dds.eval(pipeline)
 dds.codecs.databricks.displayGraph(pipeline)
 
 # COMMAND ----------
 
+dds.eval(pipeline)
+
+# COMMAND ----------
+
 dds.load("/wine-quality/my_model")
+
+# COMMAND ----------
+
+
