@@ -5,12 +5,8 @@
 
 # COMMAND ----------
 
-# Initial cleanup
-try:
-  dbutils.fs.rm("/data_managed", recurse=True)
-  dbutils.fs.rm("/data_cache", recurse=True)
-except:
-  pass
+dbutils.fs.rm("/data_managed", recurse=True)
+dbutils.fs.rm("/data_cache", recurse=True)
 
 # COMMAND ----------
 
@@ -61,11 +57,6 @@ data()
 
 # COMMAND ----------
 
-# MAGIC %md Try modifying the code of the function and then removing your modifications. The same source code will not trigger the calculations again!
-# MAGIC Also, try detaching the cluster. The result is still stored and accessed as a cache.
-
-# COMMAND ----------
-
 # MAGIC %md ## Plotting dependencies
 # MAGIC 
 # MAGIC The following code introduces dependencies between multiple data functions. We can plot the dependencies with the `dds.eval` function:
@@ -86,14 +77,12 @@ def f2():
   return outside_var + f1()
 
 @dds.dds_function("/p3")
-def f3(): return 2 + f1() + f2()
-
-@dds.dds_function("/p4")
-def f4(): return 1
+def f3(): 
+  print("eval f3")
+  return f1() + f2()
 
 
 def f():
-    f4()
     f3()
 
 # This is the first time we evaluate it, so everything will be evaluated.
