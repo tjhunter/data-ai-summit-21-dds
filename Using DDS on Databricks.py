@@ -1,7 +1,7 @@
 # Databricks notebook source
 # MAGIC %md # Using the DDS package on Databricks
 # MAGIC 
-# MAGIC This notebook shows you a few features of the [dds package](https://github.com/tjhunter/dds_py)
+# MAGIC This notebook shows you a few features of the [dds package](https://github.com/tjhunter/dds_py). Install `dds-py` to your cluster via PyPI to run this notebook.
 
 # COMMAND ----------
 
