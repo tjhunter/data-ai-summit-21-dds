@@ -1,6 +1,19 @@
 # Databricks notebook source
-# TODO: how to get that inside the notebook?
-branch="tim"
+def get_current_branch():
+  # Introspecting a private API to get the current branch.
+  # TODO: use an official API
+  notebook_utils = dbutils.entry_point.getDbutils().notebook()
+  ctx = notebook_utils.getContext()
+  user = ctx.tags().get("user").get()
+  # Hardcoding some branches for now for each user
+  d = {"timothee.hunter@gmail.com": "main", 
+       "brooke.wenig@databricks.com":"brooke"}
+  return d.get(user) or "not_found"
+
+# COMMAND ----------
+
+branch=get_current_branch()
+branch
 
 # COMMAND ----------
 
