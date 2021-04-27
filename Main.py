@@ -1,18 +1,14 @@
 # Databricks notebook source
-# MAGIC %sh
-# MAGIC pip install dds-py
-
-# COMMAND ----------
-
-# MAGIC %sh
-# MAGIC curl -kL https://github.com/restruct/dot-static/blob/master/x64/dot_static?raw=true > /usr/bin/dot
-# MAGIC chmod +x /usr/bin/dot
-# MAGIC pip install pydotplus
+# TODO: how to get that inside the notebook?
+branch="tim"
 
 # COMMAND ----------
 
 import dds
-dds.set_store("dbfs", data_dir="/data_managed", internal_dir="/data_cache")
+dds.set_store("dbfs",
+              data_dir=f"/data_managed/{branch}",
+              internal_dir="/data_cache",
+              commit_type="link_only")
 
 # COMMAND ----------
 
