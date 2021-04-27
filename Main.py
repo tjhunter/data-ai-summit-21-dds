@@ -74,7 +74,6 @@ def model_stats(clf, X_test, y_test) -> str:
         "rmse": mean_squared_error(y_test, pred, squared=False)
     })
 
-# Comment
 def pipeline():
     # Comment 2
     wine_data = data()
