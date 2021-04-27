@@ -12,7 +12,7 @@ def get_current_branch():
 
 # COMMAND ----------
 
-branch=get_current_branch()
+branch = get_current_branch()
 branch
 
 # COMMAND ----------
@@ -27,10 +27,7 @@ dds.set_store("dbfs",
 
 import sklearn
 import pandas as pd
-
 import numpy as np
-import pandas as pd
- 
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
 from sklearn.ensemble import RandomForestRegressor
@@ -51,6 +48,7 @@ data_url = "https://raw.githubusercontent.com/zygmuntz/wine-quality/master/wineq
 def data():
     print("*** in _load_data ***")
     x = requests.get(url=data_url, verify=False).content 
+    # hi everyone
     return pd.read_csv(io.StringIO(x.decode('utf8')), sep=";")
 
 # This will cause the data to load
@@ -73,7 +71,7 @@ def model_stats(clf, X_test, y_test) -> str:
     pred = clf.predict(X_test)
     return json.dumps({
         "r2_score": r2_score(y_test, pred), # uncomment me
-        "mse": mean_squared_error(y_test, pred)
+        "rmse": mean_squared_error(y_test, pred, squared=False)
     })
 
 # Comment
