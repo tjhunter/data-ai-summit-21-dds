@@ -66,31 +66,27 @@ data()
 # Try modifying this variable to see what happens
 outside_var = 3
 
-@dds.dds_function("/p1")
+@dds.dds_function("/f1")
 def f1():
   print("eval f1")
   return 1
 
-@dds.dds_function("/p2")
+@dds.dds_function("/f2")
 def f2():
   print("eval f2")
   return outside_var + f1()
 
-@dds.dds_function("/p3")
+@dds.dds_function("/f3")
 def f3(): 
   print("eval f3")
   return f1() + f2()
 
-
-def f():
-    f3()
-
 # This is the first time we evaluate it, so everything will be evaluated.
-dds.codecs.databricks.displayGraph(f)
+dds.codecs.databricks.displayGraph(f3)
 
 # COMMAND ----------
 
-f()
+f3()
 
 # COMMAND ----------
 
@@ -99,8 +95,12 @@ f()
 # COMMAND ----------
 
 outside_var = 5
-dds.codecs.databricks.displayGraph(f)
+dds.codecs.databricks.displayGraph(f3)
 
 # COMMAND ----------
 
-f()
+f3()
+
+# COMMAND ----------
+
+
