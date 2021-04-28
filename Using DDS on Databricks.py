@@ -100,7 +100,3 @@ dds.codecs.databricks.displayGraph(f3)
 # COMMAND ----------
 
 f3()
-
-# COMMAND ----------
-
-
