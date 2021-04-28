@@ -58,7 +58,8 @@ def model_stats(clf, X_test, y_test):
     pred = clf.predict(X_test)
     return json.dumps({
         "r2_score": r2_score(y_test, pred),
-        "mse": mean_squared_error(y_test, pred)
+        "mse": mean_squared_error(y_test, pred),
+        "rmse": mean_squared_error(y_test, pred, squared=False)
     })
 
 def pipeline():
