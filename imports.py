@@ -18,5 +18,5 @@ def get_current_branch():
   user = ctx.tags().get("user").get()
   # Hardcoding some branches for now for each user
   d = {"timothee.hunter@gmail.com": "main", 
-       "brooke.wenig@databricks.com":"brooke_dev"}
+       "brooke.wenig@databricks.com":"dev"}
   return d.get(user) or "main"
