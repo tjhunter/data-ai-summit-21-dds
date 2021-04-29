@@ -17,6 +17,6 @@ def get_current_branch():
   ctx = notebook_utils.getContext()
   user = ctx.tags().get("user").get()
   # Hardcoding some branches for now for each user
-  d = {"timothee.hunter@gmail.com": "tim", 
+  d = {"timothee.hunter@gmail.com": "main", 
        "brooke.wenig@databricks.com":"brooke-dev"}
   return d.get(user) or "main"
