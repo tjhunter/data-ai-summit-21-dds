@@ -23,7 +23,7 @@ dds.set_store("dbfs", data_dir="/data_managed", internal_dir="/data_cache")
 
 # COMMAND ----------
 
-@dds.dds_function("/hello_data")
+@dds.data_function("/hello_data")
 def data():
   print("Executing data()")
   return "Hello, world"
@@ -66,17 +66,17 @@ data()
 # Try modifying this variable to see what happens
 outside_var = 3
 
-@dds.dds_function("/f1")
+@dds.data_function("/f1")
 def f1():
   print("eval f1")
   return 1
 
-@dds.dds_function("/f2")
+@dds.data_function("/f2")
 def f2():
   print("eval f2")
   return outside_var + f1()
 
-@dds.dds_function("/f3")
+@dds.data_function("/f3")
 def f3(): 
   print("eval f3")
   return f1() + f2()
